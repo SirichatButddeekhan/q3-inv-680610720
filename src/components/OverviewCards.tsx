@@ -5,7 +5,6 @@ export function OverviewCards() {
   const inventory = useItemStore((state) => state.inventory);
   const totalProducts = inventory.length;
   return (
-    
     <div className="grid gap-4 md:grid-cols-3">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between pb-2">
