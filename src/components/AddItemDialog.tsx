@@ -15,6 +15,7 @@ import { Label } from "@/components/ui/label";
 export function AddItemDialog() {
   const addInventoryItem = useItemStore((state) => state.addInventoryItem);
 
+
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState("");
@@ -27,6 +28,7 @@ export function AddItemDialog() {
     if (!name || !quantity || !price) return;
 
     // addInventoryItem(name, parseInt(quantity), parseFloat(price), category);
+    addInventoryItem(name, parseInt(quantity), parseFloat(price), category);
     setName("");
     setQuantity("");
     setPrice("");
@@ -37,6 +39,8 @@ export function AddItemDialog() {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger
         render={<Button className="bg-indigo-500 hover:bg-indigo-600" />}
+
+        onClick={() => setOpen(true)}
       >
         + Add Product
       </DialogTrigger>
@@ -101,8 +105,10 @@ export function AddItemDialog() {
           <Button
             type="submit"
             className="w-full bg-blue-500 hover:bg-blue-600"
+            onClick={() => setOpen(false)}
           >
             Save Product
+
           </Button>
         </form>
       </DialogContent>

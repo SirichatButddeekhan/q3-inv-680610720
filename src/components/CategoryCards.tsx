@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
+
 const iconMap: Record<string, React.ReactNode> = {
   Electronics: <Laptop className="h-4 w-4" />,
   Stationery: <Pencil className="h-4 w-4" />,
@@ -39,10 +40,21 @@ export function CategoryCards() {
 
         return (
           // Use Card component to display values by category
-          <div>
-            {category.label} - ฿{categoryValue.toFixed(2)} - {categoryUnits}{" "}
-            units
-          </div>
+          
+          <Card key={category.value}>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                {iconMap[category.value]}
+                {category.label}
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">฿{categoryValue.toFixed(2)}</div>
+              <div className="text-sm text-muted-foreground">
+                {categoryUnits} units
+              </div>
+            </CardContent>
+          </Card>
         );
       })}
     </div>
